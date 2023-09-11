@@ -1,0 +1,61 @@
+---
+title: "FML_ASSIGNMENT1"
+output:
+  pdf_document: default
+  html_document: default
+date: "2023-09-10"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#I have taken dataset from "kaggle.com" from the url "https://www.kaggle.com/datasets/priyanshusethi/mcdonalds-nutrition-dataset".
+
+```{r}
+McDdata <- read.csv("mcdonaldata.csv")
+head(McDdata)
+```
+
+```{r}
+summary(McDdata$protien)
+```
+
+```{r}
+summary(McDdata$totalfat)
+```
+#printing descriptive statistics for categorical variable(menu)
+```{r}
+table(McDdata$menu)
+```
+#printing descriptive statistics for categorical variable(item)
+```{r}
+table(McDdata$item)
+```
+
+```{r}
+library(dplyr)
+```
+
+```{r}
+McDdata_arr1 <- arrange(McDdata, servesize)
+print(McDdata_arr1)
+```
+
+```{r}
+McDdata_arr2 <- arrange(McDdata, item)
+print(McDdata_arr2)
+```
+#transforming the carbs variable- using sqrt
+```{r}
+McDdata_carbs <- sqrt(McDdata$carbs)
+print(McDdata_carbs)
+```
+#plot for one quantitative plot for added sugar
+```{r}
+hist(McDdata$addedsugar, main="plot for 1 quantitative plot", xlab="x-axis", ylab = "y-axis", col = "pink")
+```
+#Scatter plot for cholestrol and protein
+```{r}
+plot(McDdata$cholestrol, McDdata$protien, main="Scatter plot for cholestrol and protein", xlab="x-axis", ylab="y-axis", pch=9, col="purple")
+```
